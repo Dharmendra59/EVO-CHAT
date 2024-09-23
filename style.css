@@ -90,11 +90,18 @@ body {
     border-radius: 30px 30px 0px 30px;
     color: rgba(255, 255, 255, 0.76);
     font-size: 20px;
+    justify-content: right;
 }
 
 .img {
-    width: 180px;
+    width: 140px;
     height: 100%;
+}
+
+.img1 {
+    width: 80px;
+    height: 100%;
+    padding-left: 10px;
 }
 
 .ai-chat-box {

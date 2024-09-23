@@ -1,16 +1,25 @@
 let prompt = document.querySelector("#prompt");
 let btn = document.querySelector("#btn");
-let usermessage = null;
+let chatContainer = document.querySelector(".chat-container");
+let userMessage = null;
 
-function createChatBox(html, className) {}
+function createChatBox(html, className) {
+    let div = document.createElement("div")
+    div.classList.add(className)
+    div.innerHTML = html
+    return div
+}
 
 btn.addEventListener("click", () => {
-    usermessage = prompt.value;
-    if (!usermessage) return;
+    userMessage = prompt.value;
+    if (!userMessage) return;
     let html = `<p class="text"></p>
-            <div class="img">
+            <div class="img1">
                 <img src="user.png" alt="user" width="50px">
             </div>`;
-    createChatBox(html, "user-chat-box")
+    let userChatBox = createChatBox(html, "user-chat-box")
+    userChatBox.querySelector(".text").innerText = userMessage
+    chatContainer.append(userChatBox)
+    prompt.value = ""
 
 })
