@@ -45,7 +45,7 @@ function showLoading() {
 
 
             <p class="text"></p>
-            <img class="loading" src="loading.gif" alt="loading" height="50">`
+            <img class="loading" src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif" alt="loading" height="50">`
     let aiChatBox = createChatBox(html, "ai-chat-box")
     chatContainer.append(aiChatBox)
     getApiResponse(aiChatBox)
