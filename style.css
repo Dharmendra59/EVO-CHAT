@@ -184,3 +184,36 @@ body {
         width: 30px;
     }
 }
+
+@media (max-width: 400px) {
+    .header .logo {
+        height: 50px;
+        width: 90px;
+    }
+    .container {
+        padding-top: 60%;
+    }
+    .evo {
+        height: 30px;
+        width: 50px;
+    }
+    .header .share {
+        height: 40px;
+        width: 40px;
+    }
+    .header .profile {
+        height: 40px;
+        width: 40px;
+    }
+    .si {
+        width: 20px;
+        height: 20px;
+    }
+    .pi {
+        width: 20px;
+        height: 20px;
+    }
+    #btn {
+        width: 15%;
+    }
+}
