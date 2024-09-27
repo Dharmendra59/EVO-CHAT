@@ -71,3 +71,23 @@ btn.addEventListener("click", () => {
     setTimeout(showLoading, 500)
 
 })
+prompt.addEventListener("keydown", (e) => {
+    if (e.key === 'Enter') {
+        userMessage = prompt.value;
+        if (userMessage == "") {
+            contain.style.display = "flex";
+        } {
+            contain.style.display = "none";
+        }
+        if (!userMessage) return;
+        let html = `<p class="text"></p>
+                <div class="img1">
+                    <img src="user.png" alt="user" width="50px">
+                </div>`;
+        let userChatBox = createChatBox(html, "user-chat-box")
+        userChatBox.querySelector(".text").innerText = userMessage
+        chatContainer.append(userChatBox)
+        prompt.value = ""
+        setTimeout(showLoading, 500)
+    }
+})
