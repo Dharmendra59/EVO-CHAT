@@ -50,6 +50,7 @@ function showLoading() {
     chatContainer.append(aiChatBox)
     getApiResponse(aiChatBox)
 
+
 }
 
 btn.addEventListener("click", () => {
