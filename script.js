@@ -69,8 +69,7 @@ async function getApiResponse(aiChatBox) {
             }
         })
         speaker.addEventListener("click", () => {
-            // speak(text)
-            console.log(text.value)
+            speak(textElement.innerText)
 
         })
 
