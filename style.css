@@ -153,6 +153,8 @@ body {
 .img {
     width: 140px;
     height: 100%;
+    display: flex;
+    gap: 20px;
 }
 
 .img1 {
