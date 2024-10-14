@@ -117,14 +117,16 @@ function showLoading() {
 }
 
 btn.addEventListener("click", () => {
-    user.userMessage = prompt.value;
-    if (user.userMessage == "") {
-        contain.style.display = "flex";
-    } {
-        contain.style.display = "none";
-    }
-    if (!user.userMessage) return;
-    let html = `<p class="text"></p>
+            user.userMessage = prompt.value;
+            if (user.userMessage == "") {
+                contain.style.display = "flex";
+            } {
+                contain.style.display = "none";
+            }
+            if (!user.userMessage) return;
+            let html = `
+    ${user.file.data ? `<img src="data:${user.file.mime_type};base64,${user.file.data}" class="imageSearch" />` : ""}
+    <p class="text"></p>
             <div class="img1">
                 <img src="user.png" alt="user" width="50px">
             </div>`;
@@ -136,15 +138,16 @@ btn.addEventListener("click", () => {
 
 })
 prompt.addEventListener("keydown", (e) => {
-    if (e.key === 'Enter') {
-        user.userMessage = prompt.value;
-        if (user.userMessage == "") {
-            contain.style.display = "flex";
-        } {
-            contain.style.display = "none";
-        }
-        if (!user.userMessage) return;
-        let html = `<p class="text"></p>
+            if (e.key === 'Enter') {
+                user.userMessage = prompt.value;
+                if (user.userMessage == "") {
+                    contain.style.display = "flex";
+                } {
+                    contain.style.display = "none";
+                }
+                if (!user.userMessage) return;
+                let html = `
+        ${user.file.data ? `<img src="data:${user.file.mime_type};base64,${user.file.data}" class="imageSearch" >` : ""}<p class="text"></p>
                 <div class="img1">
                     <img src="user.png" alt="user" width="50px">
                 </div>`;
