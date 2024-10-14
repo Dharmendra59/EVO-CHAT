@@ -4,6 +4,7 @@ let btn = document.querySelector("#btn");
 let imageBtn = document.querySelector("#imageBtn");
 let chatContainer = document.querySelector(".chat-container");
 let imageInput = document.querySelector("#imageBtn input")
+let image = document.querySelector("#imageBtn img")
 
 let Api_Url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyB3H0HvQ1wPylcz4-MvyY-DbJAhagjEpgc'
 let user = {
@@ -92,6 +93,9 @@ async function getApiResponse(aiChatBox) {
 
     } finally {
         aiChatBox.querySelector(".loading").style.display = "none"
+        image.src = `submit.svg`
+        image.classList.add("choose")
+        user.file = null
 
     }
 }
@@ -162,6 +166,8 @@ imageInput.addEventListener("change", () => {
             mime_type: file.type,
             data: base64string
         }
+        image.src = `data:${user.file.mime_type};base64,${base64string}`
+        image.classList.add("choose")
     }
     reader.readAsDataURL(file)
 })
