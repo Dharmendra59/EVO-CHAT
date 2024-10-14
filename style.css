@@ -129,6 +129,22 @@ body {
     background: rgba(10, 10, 10, 0.925);
 }
 
+#imageBtn {
+    width: 4%;
+    height: 40%;
+    border-radius: 50px;
+    background: rgba(26, 25, 25, 0.842);
+    border: 1px solid rgb(127, 127, 128);
+    outline: none;
+    cursor: pointer;
+    transition: all 0.5s;
+    margin-left: 4px;
+}
+
+#imageBtn:hover {
+    background: rgba(10, 10, 10, 0.925);
+}
+
 .chat-container {
     width: 100%;
     max-height: calc(100vh - 120px);
@@ -185,6 +201,9 @@ body {
         height: 30px;
         width: 30px;
     }
+    #imageBtn {
+        width: 10%;
+    }
 }
 
 @media (max-width: 400px) {
@@ -217,5 +236,8 @@ body {
     }
     #btn {
         width: 15%;
+    }
+    #imageBtn {
+        width: 13%;
     }
 }

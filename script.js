@@ -1,10 +1,18 @@
 let prompt = document.querySelector("#prompt");
 let contain = document.querySelector(".container");
 let btn = document.querySelector("#btn");
+let imageBtn = document.querySelector("#imageBtn");
 let chatContainer = document.querySelector(".chat-container");
-let userMessage = null;
-let Api_Url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyB3H0HvQ1wPylcz4-MvyY-DbJAhagjEpgc'
+let imageInput = document.querySelector("#imageBtn input")
 
+let Api_Url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=AIzaSyB3H0HvQ1wPylcz4-MvyY-DbJAhagjEpgc'
+let user = {
+    userMessage: null,
+    file: {
+        mime_type: null,
+        data: null
+    }
+}
 
 function createChatBox(html, className) {
     let div = document.createElement("div")
@@ -34,7 +42,12 @@ async function getApiResponse(aiChatBox) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                contents: [{ "role": "user", "parts": [{ text: userMessage }] }]
+                contents: [{
+                    "role": "user",
+                    "parts": [{ text: user.userMessage }, (user.file.data ? [{ "inline_data": user.file }] : [])
+
+                    ]
+                }]
             })
 
         })
@@ -100,19 +113,19 @@ function showLoading() {
 }
 
 btn.addEventListener("click", () => {
-    userMessage = prompt.value;
-    if (userMessage == "") {
+    user.userMessage = prompt.value;
+    if (user.userMessage == "") {
         contain.style.display = "flex";
     } {
         contain.style.display = "none";
     }
-    if (!userMessage) return;
+    if (!user.userMessage) return;
     let html = `<p class="text"></p>
             <div class="img1">
                 <img src="user.png" alt="user" width="50px">
             </div>`;
     let userChatBox = createChatBox(html, "user-chat-box")
-    userChatBox.querySelector(".text").innerText = userMessage
+    userChatBox.querySelector(".text").innerText = user.userMessage
     chatContainer.append(userChatBox)
     prompt.value = ""
     setTimeout(showLoading, 500)
@@ -120,21 +133,39 @@ btn.addEventListener("click", () => {
 })
 prompt.addEventListener("keydown", (e) => {
     if (e.key === 'Enter') {
-        userMessage = prompt.value;
-        if (userMessage == "") {
+        user.userMessage = prompt.value;
+        if (user.userMessage == "") {
             contain.style.display = "flex";
         } {
             contain.style.display = "none";
         }
-        if (!userMessage) return;
+        if (!user.userMessage) return;
         let html = `<p class="text"></p>
                 <div class="img1">
                     <img src="user.png" alt="user" width="50px">
                 </div>`;
         let userChatBox = createChatBox(html, "user-chat-box")
-        userChatBox.querySelector(".text").innerText = userMessage
+        userChatBox.querySelector(".text").innerText = user.userMessage
         chatContainer.append(userChatBox)
         prompt.value = ""
         setTimeout(showLoading, 500)
     }
+})
+
+imageInput.addEventListener("change", () => {
+    const file = imageInput.files[0]
+    if (!file) return
+    let reader = new FileReader()
+    reader.onload = (e) => {
+        let base64string = e.target.result.split(",")[1]
+        user.file = {
+            mime_type: file.type,
+            data: base64string
+        }
+    }
+    reader.readAsDataURL(file)
+})
+
+imageBtn.addEventListener("click", () => {
+    imageBtn.querySelector("input").click()
 })
