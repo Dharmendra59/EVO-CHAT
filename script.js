@@ -134,7 +134,7 @@ btn.addEventListener("click", () => {
     }
 
     let html = `
-        ${user.file?.data && !isImageSearch ? `<img src="data:${user.file.mime_type};base64,${user.file.data}" class="imageSearch" />` : ""}
+        ${user.file?.data && !isImageSearch ? `<img src="data:${user.file.mime_type};base64,${user.file.data}" class="imageSearch" /> ` : ""}
         <p class="text"></p>
         <div class="img1">
             <img src="user.png" alt="user" width="50px">
